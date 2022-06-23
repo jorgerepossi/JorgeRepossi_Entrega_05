@@ -1,0 +1,27 @@
+
+block content
+  #products
+    if all.length > 0
+      each product in all
+        .product
+          .product__image
+            img(src=product.thumbnail alt=product.title)
+          .product__title
+            h3=product.title
+          .product__price
+            p=product.price
+    else   
+      .message
+        h2 There are no products
+  form(action='/products' method='post')
+    .form__group
+      label(for='name') Product Name
+      input#name(type='text' name='title' placeholder='Product name' required='')
+    .form__group
+      label(for='price') Product Price
+      input#price(type='number' name='price' placeholder='120.000' required='')
+    .form__group
+      label(for='image') Product Image
+      input#image(type='text' name='thumbnail' placeholder='Image URL' required='')
+    .form__group
+      button(type='submit') Add New Product
